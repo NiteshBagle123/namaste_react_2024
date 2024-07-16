@@ -8,3 +8,11 @@
 - Minification of file
 - Bundling the code
 - File compression
+- Consistent hashing
+- Code Splitting
+- Differential bundling (support older browsers)
+- Diagnostic (debugging capabilities with beutiful error)
+- Error Handling
+- https
+- Tree shaking algorithm - remove unused code
+- Bundle different for dev and prod
