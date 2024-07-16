@@ -1,0 +1,14 @@
+{
+  "name": "namaste-react-app",
+  "version": "1.0.0",
+  "description": "react app learning and cool features",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Nitesh Bagle",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
