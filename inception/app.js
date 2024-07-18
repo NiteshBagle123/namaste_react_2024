@@ -33,7 +33,7 @@ const styleCard = {
     backgroundColor: '#f0f0f0'
 };
 
-const RestaurantCard = () => {
+const RestaurantCard = ({ resName, cuisine, rating, eta }) => {
     return (
         <div className='restaurant-card' style={styleCard}>
             <img 
@@ -41,10 +41,10 @@ const RestaurantCard = () => {
                 className='res-logo' 
                 src='https://b.zmtcdn.com/data/pictures/2/51232/e811eb8ee82e2c14447b04450a5e4334.jpg'
             />
-            <h3>Meghna Food</h3>
-            <h4>Biryani, North Indian, Asian</h4>
-            <h4>4.4 stars</h4>
-            <h4>38 minutes</h4>
+            <h3>{resName}</h3>
+            <h4>{cuisine}</h4>
+            <h4>{rating}</h4>
+            <h4>{eta}</h4>
         </div>
     );
 };
@@ -54,11 +54,18 @@ const Body = () => {
         <div className='body'>
             <div className='search'>Search</div>
             <div className='res-container'>
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
-                <RestaurantCard />
+                <RestaurantCard 
+                    resName="Meghna Foods" 
+                    cuisine="Biryani, North Indian, Asian"
+                    rating="4.4 stars"
+                    eta="38 minutes"
+                />
+                <RestaurantCard 
+                    resName="KFC"
+                    cuisine="Burger, Fast Food"
+                    rating="4.6 stars"
+                    eta="45 minutes"
+                />
             </div>
         </div>
     );

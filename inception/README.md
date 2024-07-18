@@ -16,3 +16,7 @@
 - https
 - Tree shaking algorithm - remove unused code
 - Bundle different for dev and prod
+
+# Config driven UI
+- UI driven by api data structure
+- As api structure changes then UI rendered accordingly
