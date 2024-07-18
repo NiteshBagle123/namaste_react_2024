@@ -42,6 +42,9 @@ const RestaurantCard = () => {
                 src='https://b.zmtcdn.com/data/pictures/2/51232/e811eb8ee82e2c14447b04450a5e4334.jpg'
             />
             <h3>Meghna Food</h3>
+            <h4>Biryani, North Indian, Asian</h4>
+            <h4>4.4 stars</h4>
+            <h4>38 minutes</h4>
         </div>
     );
 };
@@ -51,6 +54,10 @@ const Body = () => {
         <div className='body'>
             <div className='search'>Search</div>
             <div className='res-container'>
+                <RestaurantCard />
+                <RestaurantCard />
+                <RestaurantCard />
+                <RestaurantCard />
                 <RestaurantCard />
             </div>
         </div>
