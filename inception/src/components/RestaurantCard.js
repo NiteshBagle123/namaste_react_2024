@@ -1,3 +1,5 @@
+import { RESTAURANT_CARD_URL } from "../utils/constant";
+
 const styleCard = {
     backgroundColor: '#f0f0f0'
 };
@@ -8,7 +10,7 @@ const RestaurantCard = ({ resName, cuisine, rating, eta }) => {
             <img 
                 alt='res-logo' 
                 className='res-logo' 
-                src='https://b.zmtcdn.com/data/pictures/2/51232/e811eb8ee82e2c14447b04450a5e4334.jpg'
+                src={RESTAURANT_CARD_URL}
             />
             <h3>{resName}</h3>
             <h4>{cuisine}</h4>
