@@ -27,3 +27,7 @@
 - JSX --> Javascript syntax for creating react element (html/xml like syntax)
 - Tranpilation of code done by babel which is kind of cabinet of parcel
 - JSX(babel transpiles to) --> react element --> html dom element
+
+# Type of export/import
+- Name export (export const test / import { test })
+- Default export (export default const test / import test)
