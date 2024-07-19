@@ -1,22 +1,33 @@
+import { useState } from "react";
 import RestaurantCard from "./RestaurantCard";
+import { RESTAURANT_LIST } from '../utils/constant';
 
 const Body = () => {
+    const [resList, setResList] = useState(RESTAURANT_LIST);
+    const filterRestaurantHandler = () => {
+        const updatedResList = resList.filter(restaurant => restaurant.rating > 4.5)
+        setResList(updatedResList);
+    }
     return (
         <div className='body'>
-            <div className='search'>Search</div>
+            <div className='filter'>
+                <button 
+                    className="filter-btn" 
+                    onClick={filterRestaurantHandler}
+                >
+                    Top Rated Restaurant
+                </button>
+            </div>
             <div className='res-container'>
-                <RestaurantCard 
-                    resName="Meghna Foods" 
-                    cuisine="Biryani, North Indian, Asian"
-                    rating="4.4 stars"
-                    eta="38 minutes"
-                />
-                <RestaurantCard 
-                    resName="KFC"
-                    cuisine="Burger, Fast Food"
-                    rating="4.6 stars"
-                    eta="45 minutes"
-                />
+                {resList.map(({ id, resName, cuisine, rating, eta}) => (
+                    <RestaurantCard
+                        key={id}
+                        resName={resName}
+                        cuisine={cuisine}
+                        rating={rating}
+                        eta={eta}
+                    />
+                ))}
             </div>
         </div>
     );

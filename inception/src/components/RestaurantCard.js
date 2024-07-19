@@ -14,8 +14,8 @@ const RestaurantCard = ({ resName, cuisine, rating, eta }) => {
             />
             <h3>{resName}</h3>
             <h4>{cuisine}</h4>
-            <h4>{rating}</h4>
-            <h4>{eta}</h4>
+            <h4>{rating} stars</h4>
+            <h4>{eta} minutes</h4>
         </div>
     );
 };
