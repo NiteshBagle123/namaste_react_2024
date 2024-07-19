@@ -31,3 +31,13 @@
 # Type of export/import
 - Name export (export const test / import { test })
 - Default export (export default const test / import test)
+
+# Components rendering
+- When state variable changes react will rerender component.
+
+# React fiber
+- When rendering of components happens then virtual dom created.
+- Virtual dom is reprentation of actual dom
+- Reconciliation which also call as react fiber which react uses to update actual dom.
+- Diff algorithm react uses to update actual dom.
+- React is fast because it uses diff algorithm to update actual dom which is very fast.
