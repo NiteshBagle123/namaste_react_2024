@@ -7,7 +7,7 @@ const Body = () => {
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
     const [searchText, setSearchText] = useState('');
     const fetchRestaurantList = async () => {
-        const restaurantList = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.61610&lng=73.72860&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
+        const restaurantList = await fetch('https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.61610&lng=73.72860&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
         const jsonObj = await restaurantList.json();
         const { data: { cards }} = jsonObj;
         const restaurantListRes = cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(restaurant => ({
