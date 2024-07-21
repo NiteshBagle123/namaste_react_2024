@@ -4,6 +4,8 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
     const [resList, setResList] = useState([]);
+    const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+    const [searchText, setSearchText] = useState('');
     const fetchRestaurantList = async () => {
         const restaurantList = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.61610&lng=73.72860&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
         const jsonObj = await restaurantList.json();
@@ -25,21 +27,41 @@ const Body = () => {
         const updatedResList = resList.filter(restaurant => restaurant.rating > 4.5)
         setResList(updatedResList);
     }
+
+    const onSearchClickHandler = () => {
+        const data = resList.filter(restaurant => restaurant.resName.toLowerCase().includes(searchText.toLowerCase()));
+        console.log('print data', data);
+        setFilteredRestaurant(data);
+    }
     if(!resList.length) {
         return <Shimmer />;
     }
     return (
         <div className='body'>
             <div className='filter'>
-                <button 
+                <div className="search">
+                    <input type="text" className="search-box" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
+                    <button onClick={onSearchClickHandler}>Search</button>
+                </div>
+                <button
                     className="filter-btn" 
                     onClick={filterRestaurantHandler}
                 >
                     Top Rated Restaurant
                 </button>
+
             </div>
             <div className='res-container'>
-                {resList.map(({ id, resName, cuisine, rating, eta, imgId }) => (
+                {filteredRestaurant.length && filteredRestaurant.map(({ id, resName, cuisine, rating, eta, imgId }) => (
+                    <RestaurantCard
+                        key={id}
+                        resName={resName}
+                        cuisine={cuisine}
+                        rating={rating}
+                        eta={eta}
+                        imgId={imgId}
+                    />
+                )) || resList.map(({ id, resName, cuisine, rating, eta, imgId }) => (
                     <RestaurantCard
                         key={id}
                         resName={resName}
