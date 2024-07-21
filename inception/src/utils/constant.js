@@ -1,19 +1,2 @@
 export const LOGO_URL = 'https://tse4.mm.bing.net/th?id=OIP.ueHppfRf52CDn841Rpj8IwHaHa&pid=Api&P=0&h=220';
-export const RESTAURANT_CARD_URL = 'https://b.zmtcdn.com/data/pictures/2/51232/e811eb8ee82e2c14447b04450a5e4334.jpg';
-
-export const RESTAURANT_LIST = [
-    {
-        id: '1',
-        resName: "Meghna Foods",
-        cuisine: "Biryani, North Indian, Asian",
-        rating: 4.4,
-        eta: 38
-    },
-    {
-        id: '2',
-        resName: "KFC",
-        cuisine: "Burger, Fast Food",
-        rating: 4.6,
-        eta: 45
-    }
-]
+export const RESTAURANT_CARD_URL = 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660';

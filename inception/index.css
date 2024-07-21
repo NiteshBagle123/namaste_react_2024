@@ -25,7 +25,7 @@
 
 .restaurant-card {
     width: 200px;
-    height: 300px;
+    height: auto;
     padding: 5px;
 }
 

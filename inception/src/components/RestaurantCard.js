@@ -4,13 +4,13 @@ const styleCard = {
     backgroundColor: '#f0f0f0'
 };
 
-const RestaurantCard = ({ resName, cuisine, rating, eta }) => {
+const RestaurantCard = ({ resName, cuisine, rating, eta, imgId }) => {
     return (
         <div className='restaurant-card' style={styleCard}>
             <img 
                 alt='res-logo' 
                 className='res-logo' 
-                src={RESTAURANT_CARD_URL}
+                src={`${RESTAURANT_CARD_URL}/${imgId}`}
             />
             <h3>{resName}</h3>
             <h4>{cuisine}</h4>
