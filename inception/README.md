@@ -41,3 +41,7 @@
 - Reconciliation which also call as react fiber which react uses to update actual dom.
 - Diff algorithm react uses to update actual dom.
 - React is fast because it uses diff algorithm to update actual dom which is very fast.
+
+# Routing
+- Server side routing (network call for facing page)
+- Client side routing (loads the component on UI and network call we are not making) For example - SPA (Single Page Application).
