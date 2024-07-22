@@ -35,6 +35,9 @@ const Header = () => {
                     <li>
                         <Link to='/contact'>Contact Us</Link>
                     </li>
+                    <li>
+                        <Link to='/groceries'>Groceries</Link>
+                    </li>
                     <li>Cart</li>
                     <button className="login" onClick={onButtonClickHandler}>{buttonName}</button>
                 </ul>
