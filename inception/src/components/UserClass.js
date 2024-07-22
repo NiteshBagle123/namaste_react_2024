@@ -1,29 +1,42 @@
-import React from "react";
+import React, { useDebugValue } from "react";
 
 class UserClass extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            count: 0
+            name: 'test',
+            location: 'test1',
+            avatarURL: 'dummy'
         }
         console.log('UserClass constructor');
     }
 
-    componentDidMount() {
-        console.log('UserClass componentDidMount', this.props.user)
-        // api call
+    async componentDidMount() {
+        console.log('UserClass componentDidMount')
+        const userDetails = await fetch('https://api.github.com/users/NiteshBagle123');
+        const userDetailsJSON = await userDetails.json();
+        const { name, location, avatar_url } = userDetailsJSON;
+        this.setState({
+            name,
+            location,
+            avatarURL: avatar_url
+        })
     }
 
+    componentDidUpdate() {
+        console.log('UserClass componentDidUpdate');
+    }
+
+    componentWillUnmount() {
+        console.log('componentWillUnmount')
+    }
     render() {
-        console.log('UserClass render', this.props.user);
-        const { name, location } = this.props;
-        const { count } = this.state;
+        console.log('UserClass render');
         return (
             <div className='user-card'>
-                <p>Counter: {count}</p>
-                <button onClick={() => this.setState({ count: this.state.count + 1 })}>Counter</button>
-                <h2>{name}</h2>
-                <h3>Location: {location}</h3>
+                <img src={this.state.avatarURL}/>
+                <h2>{this.state.name}</h2>
+                <h3>Location: {this.state.location}</h3>
                 <h4>Contact: test</h4>
             </div>
         );
