@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -8,6 +8,8 @@ const Body = () => {
     const [resList, setResList] = useState([]);
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
     const [searchText, setSearchText] = useState('');
+
+    const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
     const fetchRestaurantList = async () => {
         const restaurantList = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.61610&lng=73.72860&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
         const jsonObj = await restaurantList.json();
@@ -18,7 +20,8 @@ const Body = () => {
             cuisine: restaurant.info.cuisines.join(', '),
             rating:  restaurant.info.avgRatingString,
             eta:  restaurant.info.sla.deliveryTime,
-            imgId: restaurant.info.cloudinaryImageId
+            imgId: restaurant.info.cloudinaryImageId,
+            isPromoted: true
         }));
         setResList(restaurantListRes);
     }
@@ -32,7 +35,6 @@ const Body = () => {
 
     const onSearchClickHandler = () => {
         const data = resList.filter(restaurant => restaurant.resName.toLowerCase().includes(searchText.toLowerCase()));
-        console.log('print data', data);
         setFilteredRestaurant(data);
     }
     const onlineStatus = useOnlineStatus();
@@ -61,25 +63,41 @@ const Body = () => {
                 </div>
             </div>
             <div className='flex  flex-wrap'>
-                {filteredRestaurant.length && filteredRestaurant.map(({ id, resName, cuisine, rating, eta, imgId }) => (
+                {filteredRestaurant.length && filteredRestaurant.map(({ id, resName, cuisine, rating, eta, imgId, isPromoted }) => (
                     <Link to={`/restaurants/${id}`} key={id}>
-                        <RestaurantCard
-                            resName={resName}
-                            cuisine={cuisine}
-                            rating={rating}
-                            eta={eta}
-                            imgId={imgId}
-                        />
+                        {isPromoted && <RestaurantCardPromoted 
+                                resName={resName}
+                                cuisine={cuisine}
+                                rating={rating}
+                                eta={eta}
+                                imgId={imgId}
+                            /> || 
+                            <RestaurantCard
+                                resName={resName}
+                                cuisine={cuisine}
+                                rating={rating}
+                                eta={eta}
+                                imgId={imgId}
+                            />
+                        }
                     </Link>
-                )) || resList.map(({ id, resName, cuisine, rating, eta, imgId }) => (
+                )) || resList.map(({ id, resName, cuisine, rating, eta, imgId, isPromoted }) => (
                     <Link to={`/restaurants/${id}`} key={id}>
-                        <RestaurantCard
-                            resName={resName}
-                            cuisine={cuisine}
-                            rating={rating}
-                            eta={eta}
-                            imgId={imgId}
-                        />
+                        {isPromoted && <RestaurantCardPromoted 
+                                resName={resName}
+                                cuisine={cuisine}
+                                rating={rating}
+                                eta={eta}
+                                imgId={imgId}
+                            /> || 
+                            <RestaurantCard
+                                resName={resName}
+                                cuisine={cuisine}
+                                rating={rating}
+                                eta={eta}
+                                imgId={imgId}
+                            />
+                        }
                     </Link>
                 ))}
             </div>
