@@ -1,12 +1,9 @@
 import { RESTAURANT_CARD_URL } from "../utils/constant";
 
-const styleCard = {
-    backgroundColor: '#f0f0f0'
-};
 
 const RestaurantCard = ({ resName, cuisine, rating, eta, imgId }) => {
     return (
-        <div className='m-4 p-4 w-[250px] rounded-lg' style={styleCard}>
+        <div className='m-4 p-4 w-[250px] rounded-lg bg-gray-50 hover:bg-gray-200'>
             <img 
                 alt='res-logo' 
                 className='rounded-lg' 
