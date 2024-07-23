@@ -9,7 +9,7 @@ const Body = () => {
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
     const [searchText, setSearchText] = useState('');
     const fetchRestaurantList = async () => {
-        const restaurantList = await fetch('https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.61610&lng=73.72860&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
+        const restaurantList = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.61610&lng=73.72860&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
         const jsonObj = await restaurantList.json();
         const { data: { cards }} = jsonObj;
         const restaurantListRes = cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(restaurant => ({
@@ -46,20 +46,21 @@ const Body = () => {
     }
     return (
         <div className='body'>
-            <div className='filter'>
-                <div className="search">
-                    <input type="text" className="search-box" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
-                    <button onClick={onSearchClickHandler}>Search</button>
+            <div className='filter flex'>
+                <div className="search m-4 p-4">
+                    <input type="text" className="border border-solid border-black px-6 py-1" value={searchText} onChange={(event) => setSearchText(event.target.value)}/>
+                    <button className="px-6 py-1 bg-green-100 m-4 rounded-lg" onClick={onSearchClickHandler}>Search</button>
                 </div>
-                <button
-                    className="filter-btn" 
-                    onClick={filterRestaurantHandler}
-                >
-                    Top Rated Restaurant
-                </button>
-
+                <div className="search m-4 p-4">
+                    <button
+                        className="px-6 py-1 bg-gray-100 m-4 rounded-lg" 
+                        onClick={filterRestaurantHandler}
+                    >
+                        Top Rated Restaurant
+                    </button>
+                </div>
             </div>
-            <div className='res-container'>
+            <div className='flex  flex-wrap'>
                 {filteredRestaurant.length && filteredRestaurant.map(({ id, resName, cuisine, rating, eta, imgId }) => (
                     <Link to={`/restaurants/${id}`} key={id}>
                         <RestaurantCard

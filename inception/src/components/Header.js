@@ -14,31 +14,31 @@ const Header = () => {
         }
     }
     return (
-        <div className='header'>
+        <div className='flex justify-between  shadow-lg'>
             <div className='logo'>
                 <img 
-                    className="logo-img" 
+                    className="w-20" 
                     src={LOGO_URL}
                 />
             </div>
-            <div className='nav-items'>
-                <ul>
-                    <li>
+            <div className='flex items-center'>
+                <ul className="flex p-4 m-4">
+                    <li className="px-1">
                         Online Status: {onlineStatus && 'Online' || 'offline'}
                     </li>
-                    <li>
+                    <li className="px-1">
                         <Link to='/'>Home</Link>
                     </li>
-                    <li>
+                    <li className="px-1">
                         <Link to='/about'>About Us</Link>
                     </li>
-                    <li>
+                    <li className="px-1">
                         <Link to='/contact'>Contact Us</Link>
                     </li>
-                    <li>
+                    <li className="px-1">
                         <Link to='/groceries'>Groceries</Link>
                     </li>
-                    <li>Cart</li>
+                    <li className="px-1">Cart</li>
                     <button className="login" onClick={onButtonClickHandler}>{buttonName}</button>
                 </ul>
             </div>

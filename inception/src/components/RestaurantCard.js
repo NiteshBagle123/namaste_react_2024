@@ -6,13 +6,13 @@ const styleCard = {
 
 const RestaurantCard = ({ resName, cuisine, rating, eta, imgId }) => {
     return (
-        <div className='restaurant-card' style={styleCard}>
+        <div className='m-4 p-4 w-[250px] rounded-lg' style={styleCard}>
             <img 
                 alt='res-logo' 
-                className='res-logo' 
+                className='rounded-lg' 
                 src={`${RESTAURANT_CARD_URL}/${imgId}`}
             />
-            <h3>{resName}</h3>
+            <h3 className="font-bold py-2 text-lg">{resName}</h3>
             <h4>{cuisine}</h4>
             <h4>{rating} stars</h4>
             <h4>{eta} minutes</h4>
